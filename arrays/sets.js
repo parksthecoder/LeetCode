@@ -69,6 +69,3 @@ const word = "Data Structures";
 const set = new Set(word.toLocaleLowerCase());
 console.log(set, set.size); //* using size method on a set
 
-
-
-
