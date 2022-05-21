@@ -98,6 +98,9 @@ a.forEach((letter) => {
 });
 console.log(result);
 
+//* may improve the running time by using a Map() !
+//* if you put all elements from an array into a Map() then lookup time is only O(1)
+
 //* => solving with sets and maps
 const letters = new Map();
 const uniqueLetters = new Set();
