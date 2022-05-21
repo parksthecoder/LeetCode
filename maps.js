@@ -84,3 +84,34 @@ for (let [key, value] of months.entries()) {
     console.log(`${key +1} : ${value}`);
 }
 
+
+//! Common Problem --> Intersection of Arrays
+// find all elements in array a and array b that are present in both arrays
+
+let a = ["A", "B", "C", "A", "D"];
+let b = ["A", "A", "E", "C", "D"];
+
+//* => solving without sets and maps
+let result = [];
+a.forEach((letter) => {
+    b.includes(letter) && !result.includes(letter) ? result.push(letter) : null;
+});
+console.log(result);
+
+//* => solving with sets and maps
+const letters = new Map();
+const uniqueLetters = new Set();
+
+a.forEach((letter) => {
+    letters.set(letter); // each letter of array a is set into a map
+});
+
+b.forEach((bLetter) => {
+    letters.has(bLetter) ? uniqueLetters.add(bLetter) : null;
+});
+    // if letters map (from a array) has letter from array b add it to a new set
+
+const finalArray = [...uniqueLetters]; // returning the set as an array
+console.log(finalArray);
+
+
