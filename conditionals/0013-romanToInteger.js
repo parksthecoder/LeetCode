@@ -1,11 +1,14 @@
 //* result will be a sum of Roman Numerals as a number (0 - 3999)
 //* Roman To Integer
 
+//* Converts a string of roman numerals into a number
+//* by looping over given string and checking for conditionals
+
 /**
- * @param {string} s
+ * @param {string}
  * @return {number}
  */
-var romanToInt = function (s) {
+function romanToInt (s) {
   // const array = s.split()
 
   const numerals = {
