@@ -2,7 +2,7 @@
 //* => Singly Linked List - each node contains a value and exactly one reference to the next node
 
 //* a Node is used to store values in a linked list
-// any time a vlaue is added to the Linked List
+// any time a value is added to the Linked List
 // --> it creates a instance of the Node class
 
 class Node {
@@ -51,22 +51,42 @@ class LinkedList {
    *    the new value to insert
    * @returns {LinkedList}
    */
-  insert(value) {
-    const newNode = new Node(value); // new node with value to insert
 
+  insert(value, isMatch = (node, index) => index === this.length - 1) {
     if (this.head) {
-      let tail = this.head; 
-      while (tail.next) {   // iterate through list until the end of the list is reached
-        tail = tail.next;
+      const previousNode = this.find(isMatch);
+
+      if (!previousNode) {
+        throw new Error("No match found.");
       }
-      tail.next = newNode;  // once end of list is reached set end node's next property to the new node
+
+      previousNode.next = new Node(value, previousNode.next);
     } else {
-      this.insertAtHead(value); // if the list is empty insertAtHead()
+      this.insertAtHead(value);
     }
     return this;
   }
 
-  
+  /**
+   *
+   * @param {*} isMatch
+   *    function that returns true if current node matches conditions
+   * @returns {Node|null}
+   *    the first node where isMatch(node, index) === true
+   *    or null if no match is found
+   */
+  find(isMatch) {
+    let index = 0;
+    let node = this.head;
+    while (node) {
+      if (isMatch(node, index)) {
+        return node;
+      }
+      index++;
+      node = node.next;
+    }
+    return null;
+  }
 }
 
 module.exports = LinkedList;
