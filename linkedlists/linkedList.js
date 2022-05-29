@@ -76,16 +76,66 @@ class LinkedList {
    *    or null if no match is found
    */
   find(isMatch) {
+    return this.findWithPrevious(isMatch)[0];
+
+    //! since findWithPrevious() was identically functioning just call findWithPrevious() with isMatch returning the first result [0]
+    // let index = 0;
+    // let node = this.head;
+    // while (node) {
+    //   if (isMatch(node, index)) {
+    //     return node;
+    //   }
+    //   index++;
+    //   node = node.next;
+    // }
+    // return null;
+  }
+
+  /**
+   * Find a node, and its previous node in the linked list
+   * @param {*} isMatch
+   *    Function that returns 'true' if the current node matches
+   * @returns {[Node|null, Node|null]}
+   *    The first element is the node where 'isMatch(node, index)
+   *    The second element is the previous Node, or null if no match
+   *    This second element is also 'null' if 'this.head' is the match
+   */
+  findWithPrevious(isMatch) {
     let index = 0;
+    let previous = null;
     let node = this.head;
     while (node) {
       if (isMatch(node, index)) {
-        return node;
+        return [node, previous];
       }
       index++;
+      previous = node;
       node = node.next;
     }
-    return null;
+    return [null, null];
+  }
+
+  /**
+   * Remove the first node where isMatch(node, index, this) === true
+   *
+   * @param {*} isMatch
+   *   Function that returns true if the current node matches the node to be removed
+   * @returns {*}
+   *  The value of the removed node, where isMatch(node, index) === true, or null if no match is found
+   */
+  remove(isMatch) {
+    const [matchedNode, previousNode] = this.findWithPrevious(isMatch);
+
+    if (!matchedNode) {
+      return null;
+    }
+
+    if (this.head === matchedNode) {
+      this.head = this.head.next;
+    } else {
+      previousNode.next = matchedNode.next;
+    }
+    return matchedNode.value;
   }
 }
 

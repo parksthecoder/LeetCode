@@ -29,3 +29,7 @@ console.log(
 console.log(linkedList.find((node, index) => index === 0));
 console.log(linkedList.find((node, index) => index === 1));
 
+//* insert AFTER a certain given value
+linkedList.insert(1.5, (node) => node.value === 1)
+console.log(linkedList);
+
