@@ -3,13 +3,6 @@
 // You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 
 /**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
  * @param {ListNode} l1
  * @param {ListNode} l2
  * @return {ListNode}

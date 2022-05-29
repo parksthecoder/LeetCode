@@ -6,9 +6,9 @@
 
 /**
  * @param {string}
- * @return {number} // 0 -3999
+ * @return {number} // 0 - 3999
  */
-function romanToInt (s) {
+function romanToInt(s) {
   // const array = s.split()
 
   const numerals = {
@@ -49,7 +49,7 @@ function romanToInt (s) {
     }
     return numeralSum;
   }
-};
+}
 
 console.log(romanToInt("XLIX"));
 console.log(romanToInt("LI"));

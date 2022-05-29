@@ -1,7 +1,6 @@
 // alert("I am JavaScript");
 
-
-const fruits = ["banana", "apple", "strawberry", "cherry", "watermelon"]
+const fruits = ["banana", "apple", "strawberry", "cherry", "watermelon"];
 
 //* looping over an array and manipulating
 // for (let i = 0; i < fruits.length; i++) {
@@ -14,27 +13,27 @@ const fruits = ["banana", "apple", "strawberry", "cherry", "watermelon"]
 
 // console.log(fruits);
 
-//! push() method
-//* => adds element to end
+//! push()
+//* => adds element to end      --> O(1)
 // fruits.push("pineapple"); // add pineapple to end
 // console.log(fruits);
 
-//! pop() method
-//* => removes element from end
+//! pop()
+//* => removes element from end     --> O(1)
 // fruits.pop();             // removes "pineapple" from end
 // console.log(fruits);
 
-//! unshift() method
-//* => adds element to beginning
+//! unshift()
+//* => adds element to beginning    --> O(n)
 // fruits.unshift("pineapple"); // add "pineapple" to beginning of array
 // console.log(fruits);
 
-//! shift() method 
-//* => removes element from beginning
+//! shift()
+//* => removes element from beginning   --> O(n)
 // fruits.shift();              // removes "pineapple" from beginning
 // console.log(fruits);
 
-//! splice() method --> Modifies Original Array
+//! splice() --> Modifies Original Array
 //* => removes everything between two indices (no third input)
 // fruits.splice(1, 3);
 // console.log(fruits);
@@ -60,10 +59,39 @@ const fruits = ["banana", "apple", "strawberry", "cherry", "watermelon"]
 // var array2=[1,2,3,4,5]
 // console.log(array2.slice(2));
 
-
 // console.log("----after-----");   // proving splice modifies && slice does not
 // console.log(array);
 // console.log(array2);
 
+//! includes()
+//* => returns a boolean if array includes a certain value
+console.log(fruits.includes("banana"));
+console.log(fruits.includes("orange"));
 
-//! 
+// includes(searchElement)
+// includes(searchElement, fromIndex)   // fromIndex is position in array to begin search
+
+//! concat()
+//* merge two more more arrays (does not change existing arrays, returns a new array)
+// if a reference object is modified, the changes are visible to both new and original arrays
+const array1 = ["a", "b", "c"];
+const array2 = ["d", "e", "f"];
+const array3 = array1.concat(array2); // can add multiple arrays to concatenate
+
+console.log(array3);
+
+//! entries()
+//* => returns a new array iterator that contins key/value paris for each index in the array
+const a = ["a", "b", "c"];
+
+// iterating with index and element
+for (const [index, element] of a.entries()) {
+  console.log(index, element);
+}
+
+// using a for...of loop
+const arrayEntries = a.entries();
+
+for (let element of arrayEntries) {
+  console.log(element);
+}
