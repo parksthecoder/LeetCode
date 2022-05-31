@@ -34,6 +34,8 @@ const fruits = ["banana", "apple", "strawberry", "cherry", "watermelon"];
 // console.log(fruits);
 
 //! splice() --> Modifies Original Array
+//* => The splice() methods is used to DELETE or INSERT elements at ARBITRARY positions in an Array.
+
 //* => removes everything between two indices (no third input)
 // fruits.splice(1, 3);
 // console.log(fruits);
@@ -81,10 +83,10 @@ const array3 = array1.concat(array2); // can add multiple arrays to concatenate
 console.log(array3);
 
 //! entries()
-//* => returns a new array iterator that contins key/value paris for each index in the array
+//* => returns a new array iterator that contins key/value pairs for each index in the array
 const a = ["a", "b", "c"];
 
-// iterating with index and element
+// iterating with index AND element
 for (const [index, element] of a.entries()) {
   console.log(index, element);
 }
@@ -95,3 +97,45 @@ const arrayEntries = a.entries();
 for (let element of arrayEntries) {
   console.log(element);
 }
+
+//! filter()
+//* => returns filtered array based on conditional statement
+const hasLetterL = fruits.filter((fruit) => fruit.includes("l"));
+console.log(hasLetterL);
+
+//! map()
+//* => returns an Array / general map (often used to map info/items into React components for list)
+const numArray = [1, 4, 9, 16]
+
+const numMap = numArray.map(x => x * 2)
+console.log(numMap)
+
+//* => reformat objects in an array
+const objectsArray = [
+    { key: 1, value: 10 },
+    { key: 2, value: 20 },
+    { key: 3, value: 30 }
+]
+const reformattedArray = objectsArray.map(({key, value}) => ({ [key]: value + 10}))
+console.log(reformattedArray)
+
+//! Array [] into Object {}
+//* => for loop to make an object from an array
+const obj = {};
+
+for (let i = 0; i < fruits.length; i++) {
+    obj[i] = fruits[i]
+}
+console.log(obj)
+
+//* => Object.assign({}, array) to make an object from an array
+const objAssign = Object.assign({}, fruits);
+
+console.log(objAssign)
+
+//* => spread operator to make an object fro man array
+const objFromSpreadOperator = {...fruits};
+console.log(objFromSpreadOperator)
+
+
+//! 
