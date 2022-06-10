@@ -100,19 +100,20 @@ class LinkedList {
    *    The second element is the previous Node, or null if no match
    *    This second element is also 'null' if 'this.head' is the match
    */
+  //! both find() and findWithPrevious() start iteration from the head of the list
   findWithPrevious(isMatch) {
-    let index = 0;
-    let previous = null;
-    let node = this.head;
-    while (node) {
-      if (isMatch(node, index)) {
-        return [node, previous];
+    let index = 0;        // index of current node is tracked
+    let previous = null;  // previous node of current node is tracked
+    let node = this.head; // node starts at head
+    while (node) {    // goes over each node looking for condtions from isMatch(node, index)
+      if (isMatch(node, index)) { // isMatch is a condtions for node or index
+        return [node, previous]; // returns current node and its previous node
       }
-      index++;
+      index++;      // each node is tracked until match is found
       previous = node;
       node = node.next;
     }
-    return [null, null];
+    return [null, null];  // default condtions if a match is not found
   }
 
   /**

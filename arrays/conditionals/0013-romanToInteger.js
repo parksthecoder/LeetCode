@@ -27,7 +27,7 @@ function romanToInt(s) {
     for (i = 0; i < s.length; i++) {
       if (s[i] == "I" && s[i + 1] == "V") {
         numeralSum += 4;
-        i++;
+        i++;  // i++ sends loop to next iteration of i
       } else if (s[i] == "I" && s[i + 1] == "X") {
         numeralSum += 9;
         i++;

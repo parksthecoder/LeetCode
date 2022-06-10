@@ -1,35 +1,43 @@
-const LinkedList = require("./linkedList");
+const LinkedList = require("./linkedList")
 
-const linkedList = new LinkedList();
+const linkedList = new LinkedList() // invoking new linkedList
 
-// linkedList.insertAtHead("One");
-// linkedList.insertAtHead(2);
-linkedList.insert("One");
-linkedList.insert(2);
+// linkedList.insertAtHead("One")
+// linkedList.insertAtHead(2)
+linkedList.insert("One")
+linkedList.insert(2)
+linkedList.insert(3)
 
-console.log(linkedList);
-console.log(linkedList.length);
+// console.log(linkedList);
+// console.log(linkedList.length)
 
-//* can use the find() method to update the value of a node in the list
-linkedList.find((node) => node.value === "One").value = 1;
+//! linked list functionalty requires node.value or node.index conditionals
 
-console.log(linkedList);
+// //* can use the find() method to update the value of a node in the list
+linkedList.find((node) => node.value === "One").value = 1  // where value is "One" change to 1
 
+console.log(linkedList)
+
+//* use find() to find a node by its value given conditional
 console.log(
     "find 2",
     linkedList.find((node) => node.value === 2)
-);
+)
 
 console.log(
     "find 3",
     linkedList.find((node) => node.value === 3)
-);
+)
 
 //* can find a node by index as follows
-console.log(linkedList.find((node, index) => index === 0));
-console.log(linkedList.find((node, index) => index === 1));
+console.log(linkedList.find((node, index) => index === 0))
+console.log(linkedList.find((node, index) => index === 1))
 
-//* insert AFTER a certain given value
+//* insert AFTER a certain given value / index
 linkedList.insert(1.5, (node) => node.value === 1)
-console.log(linkedList);
+console.log(linkedList)
+
+//* remove a node given a conditional for the node.value or node.index
+linkedList.remove((node) => node.value === 1)   // in parenthesis is the isMatch() input for the remove() functionality of the linked list
+console.log(linkedList)
 
