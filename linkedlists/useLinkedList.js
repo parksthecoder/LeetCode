@@ -4,7 +4,7 @@ const linkedList = new LinkedList() // invoking new linkedList
 
 // linkedList.insertAtHead("One")
 // linkedList.insertAtHead(2)
-linkedList.insert("One")
+linkedList.insert("One")           // insert() will use the last node as the isMatch value by default inserting at the end by default
 linkedList.insert(2)
 linkedList.insert(3)
 
@@ -40,4 +40,20 @@ console.log(linkedList)
 //* remove a node given a conditional for the node.value or node.index
 linkedList.remove((node) => node.value === 1)   // in parenthesis is the isMatch() input for the remove() functionality of the linked list
 console.log(linkedList)
+
+
+const printLinkedList = () => {
+    let current = linkedList.head;
+    while (current !== null) {
+        console.log(current.value)
+        current = current.next;
+    }
+}
+
+printLinkedList()
+
+//* linked list into an array
+const linkedListArray = linkedList.linkedListToArray();
+console.log(linkedListArray)
+
 

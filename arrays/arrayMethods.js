@@ -105,6 +105,8 @@ console.log(hasLetterL);
 
 //! map()
 //* => returns an Array / general map (often used to map info/items into React components for list)
+// map builds a new array, using it when you aren't using the returned array is an anti-patterm
+// if not using returned array use forEach() or for...of instead
 const numArray = [1, 4, 9, 16]
 
 const numMap = numArray.map(x => x * 2)
@@ -119,12 +121,20 @@ const objectsArray = [
 const reformattedArray = objectsArray.map(({key, value}) => ({ [key]: value + 10}))
 console.log(reformattedArray)
 
+//! find()
+//* => find a given item of an array that matches given conditions
+console.log(fruits.find((fruit) => fruit === "strawberry"))
+
+//! reduce()
+//* => 
+
+
 //! Array [] into Object {}
 //* => for loop to make an object from an array
 const obj = {};
 
 for (let i = 0; i < fruits.length; i++) {
-    obj[i] = fruits[i]
+    obj[i] = fruits[i]  // key = value in the object per loop
 }
 console.log(obj)
 
@@ -133,9 +143,8 @@ const objAssign = Object.assign({}, fruits);
 
 console.log(objAssign)
 
-//* => spread operator to make an object fro man array
+//* => spread operator to make an object from an array
 const objFromSpreadOperator = {...fruits};
 console.log(objFromSpreadOperator)
 
 
-//! 

@@ -51,8 +51,9 @@ class LinkedList {
    *    the new value to insert
    * @returns {LinkedList}
    */
-
+  //! O(1) runtime
   insert(value, isMatch = (node, index) => index === this.length - 1) {
+    // isMatch defaulted to the last node
     if (this.head) {
       const previousNode = this.find(isMatch);
 
@@ -102,18 +103,20 @@ class LinkedList {
    */
   //! both find() and findWithPrevious() start iteration from the head of the list
   findWithPrevious(isMatch) {
-    let index = 0;        // index of current node is tracked
-    let previous = null;  // previous node of current node is tracked
+    let index = 0; // index of current node is tracked
+    let previous = null; // previous node of current node is tracked
     let node = this.head; // node starts at head
-    while (node) {    // goes over each node looking for condtions from isMatch(node, index)
-      if (isMatch(node, index)) { // isMatch is a condtions for node or index
+    while (node) {
+      // goes over each node looking for condtions from isMatch(node, index)
+      if (isMatch(node, index)) {
+        // isMatch is a condtions for node or index
         return [node, previous]; // returns current node and its previous node
       }
-      index++;      // each node is tracked until match is found
+      index++; // each node is tracked until match is found
       previous = node;
       node = node.next;
     }
-    return [null, null];  // default condtions if a match is not found
+    return [null, null]; // default condtions if a match is not found
   }
 
   /**
@@ -138,6 +141,75 @@ class LinkedList {
     }
     return matchedNode.value;
   }
+
+  linkedListToArray() {
+    const array = [];
+    let node = this.head;
+    while (node !== null) {
+      array.push(node.value);
+      node = node.next;
+    }
+    return array;
+  }
 }
 
 module.exports = LinkedList;
+
+// example manually building a linkedList ONLY using the Node class (not using LinkedList)
+// for explanation only. use LinkedList by importing it instead
+
+const a = new Node("A");
+const b = new Node("B");
+const c = new Node("C");
+const d = new Node("D");
+
+a.next = b;
+b.next = c;
+c.next = d;
+
+//! printing a linked list
+// non-recursive
+// const printLinkedList = (head) => {
+//   let current = head;
+//   while (current !== null) {
+//     console.log(current.value)
+//     current = current.next
+//   }
+// }
+
+// Recursive function (same funtionality as above)
+const printLinkedList = (head) => {
+  if (head === null) return; // base case
+  console.log(head.value, "==>");
+  printLinkedList(head.next); // recursive case
+};
+
+printLinkedList(a);
+
+//! linked list to array
+// non-recursive linked list to array
+const linkedListToArray = (head) => {
+  const array = [];
+  let node = head;
+  while (node !== null) {
+    array.push(node.value);
+    node = node.next;
+  }
+  return array;
+};
+
+// Recursive linked list to array (same functinality as above)
+
+const recursiveLinkedListToArray = (head) => {
+  const values = []
+  fillValues(head, values)
+  return values
+}
+
+const fillValues = (head, values) => {  // separate helper function helps run time complexity
+  if (head === null) return
+  values.push(head.value)
+  fillValues(head.next, values)
+}
+
+console.log(recursiveLinkedListToArray(a))
